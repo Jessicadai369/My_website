@@ -15,7 +15,7 @@ params:
   contact:
     address:
       - city: City, ST 00000
-        country:United Kingdom
+        country: United Kingdom
         street: Regent's street
         title: Address
     buttonClear: Clear
