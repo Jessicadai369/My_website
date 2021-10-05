@@ -1,6 +1,6 @@
-baseURL: http://example.org/
+baseURL: https://mengyaojessica.netlify.app/
 languageCode: en-us
-title: Forty
+title: Portfolio website for Jessica DAI
 theme: forty
 googleAnalytics: ''
 disqusShortname: ''
@@ -8,15 +8,15 @@ params:
   banner:
     buttonText: Get Started
     subtitle: |-
-      A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
+     # A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
       AND RELEASED UNDER THE CREATIVE COMMONS.
-    title: Hi, my name is Forty
+    title: Hi, my name is Jessica Dai
   blog: {}
   contact:
     address:
       - city: City, ST 00000
-        country: Country
-        street: Street
+        country:United Kingdom
+        street: Regent's street
         title: Address
     buttonClear: Clear
     buttonSend: Send message
