@@ -85,7 +85,7 @@ tidyweather <- tidyweather %>%
          year = year(date))
 
 ggplot(tidyweather, aes(x=date, y = delta))+
-  geom_point()+
+  geom_point(alpha=0.5)+
   geom_smooth(color="red") +
   theme_bw() +
   labs (
@@ -102,7 +102,7 @@ From the graph it becomes very clear that since c. 1975, temperature deviations 
 ```{r facet_wrap, echo=FALSE}
 
 ggplot(tidyweather, aes(x=date, y = delta))+
-  geom_point()+
+  geom_point(alpha=0.5)+
   geom_smooth(color="red") +
   theme_bw()+ 
   labs (
@@ -217,7 +217,7 @@ To find the lower and upper confidence intervals, we generated 1000 artificial s
 
 ```{r, read_global_warming_pew_data}
 
-global_warming_pew <- read_csv(here::here("data", "global_warming_pew.csv"))
+global_warming_pew <- read_csv(here::here("data_new", "global_warming_pew.csv"))
 ```
 
 
