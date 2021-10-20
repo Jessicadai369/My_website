@@ -5,7 +5,7 @@ categories:
 date: "2021-09-30"
 description: with ggplot # the title that will show up once someone gets to this page
 draft: false
-image: GDP.jpg # save picture in \static\img\blogs. Acceptable formats= jpg, jpeg, or png . Your iPhone pics wont work
+image: streetview.jpg # save picture in \static\img\blogs. Acceptable formats= jpg, jpeg, or png . Your iPhone pics wont work
 
 keywords: ""
 slug: yield_curve # slug is the shorthand URL address... no spaces plz
@@ -72,8 +72,8 @@ Our dataframe `yield_curve` has five columns (variables):
 
 ### Yields on US rates by duration since 1960
 
+
 ```{r yield_curve_1, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "yield_curve1.png"), error = FALSE)
 
 #releveling and renaming the factor levels
 yield_curve_2<- yield_curve %>% 
@@ -82,7 +82,7 @@ yield_curve_2<- yield_curve %>%
   mutate(maturity=fct_recode(maturity,"3-Month Treasury Bill"= "3m", "6-Month Treasury Bill" = "6m", "1-Year Treasury Rate"= "1y","2-Year Treasury Rate"= "2y", "3-Year Treasury Rate"="3y","5-Year Treasury Rate"= "5y","7-Year Treasury Rate"= "7y","10-Year Treasury Rate"= "10y", "20-Year Treasury Rate"="20y", "30-Year Treasury Rate"="30y" ))
 
 #plotting the data
-ggplot(yield_curve_2, aes(x=date, y=value, color=maturity))+
+graph_1 <- ggplot(yield_curve_2, aes(x=date, y=value, color=maturity))+
   geom_line()+
   facet_wrap(~maturity, ncol=2)+
   theme_bw()+
@@ -92,14 +92,14 @@ ggplot(yield_curve_2, aes(x=date, y=value, color=maturity))+
        x="",
        caption="Source: St. Louis Federal Reserve Economic Database (FRED)")
 
-
+graph_1 
 ```
 
 ### Monthly yields on US rates by duration since 1999 on a year-by-year basis
 
 
+
 ```{r yield_curve_2, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "yield_curve2.png"), error = FALSE)
 
 #releveling the maturity factor and filtering for 1999-2021
 yield_curve_3<-yield_curve %>% 
@@ -109,7 +109,7 @@ yield_curve_3<-yield_curve %>%
   filter(year>1998)
 
 #plotting using the "group" assignment to group by dates
-ggplot(yield_curve_3, aes(x=maturity, y=value, color=year, group = date))+
+graph_2 <- ggplot(yield_curve_3, aes(x=maturity, y=value, color=year, group = date))+
   geom_line()+
   facet_wrap(~year, ncol=4)+
   theme_bw()+
@@ -118,17 +118,15 @@ ggplot(yield_curve_3, aes(x=maturity, y=value, color=year, group = date))+
        y="%",
        x="Maturity",
        caption="Source: St. Louis Federal Reserve Economic Database (FRED)")
-
-
+graph_2
 ```
 Because the yield curve inverted prior to crises for several times, for example in 2008, it is widely regarded as a crisis predictor. In 2021, the yield curve is characterized by very low yields across different maturities. 
 
 
 ### 3-month and 10-year yields since 1999
 
-```{r yield_curve_3, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "yield_curve3.png"), error = FALSE)
 
+```{r yield_curve_3, echo=FALSE, out.width="100%"}
 
 #filtering for maturities "3m" and "10y" as well as 1999-2021
 yield_curve_4 <- yield_curve %>% 
@@ -136,7 +134,7 @@ yield_curve_4 <- yield_curve %>%
   filter(year(date) >= 1999)
 
 #plotting the 
-ggplot(yield_curve_4, aes(x=date,y=value,color = duration))+
+graph_3 <- ggplot(yield_curve_4, aes(x=date,y=value,color = duration))+
     geom_line()+
     labs(title = "Yields on 3-month and 10-year US Treasury rates since 1999",
     subtitle = "",
@@ -146,7 +144,7 @@ ggplot(yield_curve_4, aes(x=date,y=value,color = duration))+
     caption="Source: St. Louis Federal Reserve Economic Database (FRED)")+
     theme_bw()+ 
     theme(legend.title=element_blank())
-
+graph_3
 ```
 
 

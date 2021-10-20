@@ -89,10 +89,10 @@ params:
         subtitle: With R
         title: Yield Curve inversion
         url: blogs/yield_curve
-      - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Magna
-        url: blogs/magna
+      - image: bike.jpg
+        subtitle: With R
+        title: Excess rentals in TfL bike sharing
+        url: blogs/r_2
       - image: CV.jpg
         subtitle: Learn more about me
         title: Resume
