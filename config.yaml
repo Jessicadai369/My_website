@@ -6,7 +6,7 @@ googleAnalytics: ''
 disqusShortname: ''
 params:
   banner:
-    buttonText: Get Started
+    buttonText: Start from here
     subtitle: |-
 # A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP 
 # AND RELEASED UNDER THE CREATIVE COMMONS.
@@ -85,7 +85,7 @@ params:
         subtitle: Half Sweet Half Salty
         title: About me
         url: blogs/self_intro
-      - image: gdp_cover.jpg
+      - image: yield_curve.jpg
         subtitle: With R
         title: Yield Curve inversion
         url: blogs/yield_curve
@@ -101,18 +101,18 @@ params:
         subtitle: I miss Hong Kong
         title: Undergrad
         url: blogs/undergrad_uni
-      - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
-        url: blogs/ipsum
+      - image: climate.jpg
+        subtitle: With R
+        title: Climate change and temperature anomalies 
+        url: blogs/climate_change
   two:
-    buttonText: Get Started
+    buttonText: Check it out
     enable: yes
-    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
-      \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
-      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
-      pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
-      Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
-      amet pharetra et feugiat tempus."
-    title: Massa libero
+   # subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
+    #  \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
+   #   condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
+   #   pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
+   #   Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
+   #   amet pharetra et feugiat tempus."
+    title: My Lifestyle
     url: blogs

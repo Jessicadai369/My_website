@@ -9,7 +9,7 @@ image: hk vibe.jpg # save picture in \static\img\blogs. Acceptable formats= jpg,
 
 keywords: ""
 slug: undergrad_uni # slug is the shorthand URL address... no spaces plz
-title: Me in Toastmasters!
+title: Hong Kong Vibe
 ---
 
 > Eager to participate in extracurricular activities to broaden my horizons and immerse myself in different social groups, I joined various university societies during my undergraduate studies. As the **vice president of the Toastmasters Club**, I led organising activities to help our members hone their leadership and public speaking skills. In particular, I was able to work with an astoundingly diverse set of team members, with club leadership hailing from regions like Canada and Pakistan, bringing together weekly roundtables to discuss best practices for leadership. This experience, I believe, has significantly boosted my ability to communicate with and present to targeted audience members.

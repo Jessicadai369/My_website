@@ -1,0 +1,186 @@
+---
+categories:  
+- ""    #the front matter should be like the one found in, e.g., blog2.md. It cannot be like the normal Rmd we used
+- ""
+date: "2021-09-30"
+description: with ggplot # the title that will show up once someone gets to this page
+draft: false
+image: change.jpg # save picture in \static\img\blogs. Acceptable formats= jpg, jpeg, or png . Your iPhone pics wont work
+
+keywords: ""
+slug: climate_change # slug is the shorthand URL address... no spaces plz
+title: Climate change and temperature anomalies 
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="climate-change-and-temperature-anomalies" class="section level1">
+<h1>Climate change and temperature anomalies</h1>
+<pre class="r"><code>weather &lt;- 
+  read_csv(&quot;https://data.giss.nasa.gov/gistemp/tabledata_v4/NH.Ts+dSST.csv&quot;, 
+           skip = 1, 
+           na = &quot;***&quot;)</code></pre>
+<pre class="r"><code>tidyweather &lt;- weather %&gt;% 
+  select(1:13) %&gt;% 
+  pivot_longer(cols=2:13,
+               names_to=&quot;Month&quot;,
+               values_to=&quot;delta&quot;)</code></pre>
+<pre class="r"><code>tidyweather &lt;- tidyweather %&gt;%
+  mutate(date = ymd(paste(as.character(Year), Month, &quot;1&quot;)),
+         month = month(date, label=TRUE),
+         year = year(date))
+
+ggplot(tidyweather, aes(x=date, y = delta))+
+  geom_point(alpha=0.5)+
+  geom_smooth(color=&quot;red&quot;) +
+  theme_bw() +
+  labs (
+    title = &quot;Weather Anomalies&quot;, 
+    subtitle = &quot;Measured as deviations from base value in degrees celsius&quot;, 
+    y=&quot;Temperature deviation from base value&quot;, 
+    x=&quot;Year&quot;
+    )</code></pre>
+<p><img src="/blogs/climate_change_files/figure-html/scatter_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>From the graph it becomes very clear that since c. 1975, temperature deviations from the base value have consistently increased.</p>
+<p><img src="/blogs/climate_change_files/figure-html/facet_wrap-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>These charts show that temperature deviations in individual months vary between each other. For instance, in the winter months (December, January, February), deviations are particularly significant when compared to the summer months (June, July). Especially in areas with a lot of permafrost and icecaps, warmer winters can cause substantial ice-melts.</p>
+<pre class="r"><code>comparison &lt;- tidyweather %&gt;% 
+  filter(Year&gt;= 1881) %&gt;%     #remove years prior to 1881
+  #create new variable &#39;interval&#39;, and assign values based on criteria below:
+  mutate(interval = case_when(
+    Year %in% c(1881:1920) ~ &quot;1881-1920&quot;,
+    Year %in% c(1921:1950) ~ &quot;1921-1950&quot;,
+    Year %in% c(1951:1980) ~ &quot;1951-1980&quot;,
+    Year %in% c(1981:2010) ~ &quot;1981-2010&quot;,
+    TRUE ~ &quot;2011-present&quot;
+  ))</code></pre>
+<pre class="r"><code>ggplot(comparison, aes(x=delta, fill=interval))+
+  geom_density(alpha=0.2) +   #density plot with tranparency set to 20%
+  theme_bw() +                #theme
+  labs (
+    title = &quot;Density Plot for Monthly Temperature Anomalies&quot;,
+    y     = &quot;Density&quot;)         #changing y-axis label to sentence case</code></pre>
+<p><img src="/blogs/climate_change_files/figure-html/density_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>The key message of this graph is that in the most recent time interval (2011-present), monthly temperature anomalies are particularly common. These anomalies are (about) normally distributed around +1 degrees.</p>
+<pre class="r"><code>#creating yearly averages
+average_annual_anomaly &lt;- tidyweather %&gt;% 
+  group_by(Year) %&gt;%   #grouping data by Year
+  
+  # creating summaries for mean delta 
+  # use `na.rm=TRUE` to eliminate NA (not available) values 
+  summarise(annual_average_delta=mean(delta,  na.rm=TRUE)) 
+  
+
+#plotting the data:
+ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
+  geom_point()+
+  
+  #Fit the best fit line, using LOESS method
+  geom_smooth(method=&quot;loess&quot;) +
+  
+  #change to theme_bw() to have white background + black frame around plot
+  theme_bw() +
+  labs (
+    title = &quot;Average Yearly Anomaly&quot;,
+    y     = &quot;Average Annual Delta&quot;
+  )                         </code></pre>
+<p><img src="/blogs/climate_change_files/figure-html/averaging-1.png" width="648" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>formula_ci &lt;- comparison %&gt;%
+  filter(interval == &quot;2011-present&quot;) %&gt;% 
+  summarise(mean=mean(delta, na.rm=TRUE),
+            t_critical=qt(0.975,n()-1),
+            sd=sd(delta, na.rm=TRUE), 
+            count=n(),
+            se=sd/(count)^(1/2), 
+            lower_CI=mean-t_critical*se, 
+            upper_CI=mean+t_critical*se)
+
+formula_ci</code></pre>
+<pre class="r"><code># use the infer package to construct a 95% CI for delta
+
+boot_delta&lt;-comparison %&gt;% 
+  filter(interval==&quot;2011-present&quot;) %&gt;% 
+  specify(response = delta) %&gt;% 
+  generate(reps=1000, type=&quot;bootstrap&quot;) %&gt;% 
+  calculate(stat=&quot;mean&quot;)
+
+percentile_CI&lt;-boot_delta %&gt;% 
+  get_confidence_interval(level=0.95, type=&quot;percentile&quot;)
+percentile_CI</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   lower_ci upper_ci
+##      &lt;dbl&gt;    &lt;dbl&gt;
+## 1     1.01     1.10</code></pre>
+<p>To find the lower and upper confidence intervals, we generated 1000 artificial samples of data and calculated their respective means. Out of these means, the 25th lowest corresponds to the lower confidence interval (1.01) and the 975th highest corresponds to the upper confidence interval (1.11). Based on this data, we can be 95% confident that the average temperature anomaly of the time period 2011-present lies between 1.01-1.11 degrees. Clearly, this is supportive of climate change.</p>
+<pre class="r"><code>global_warming_pew &lt;- read_csv(here::here(&quot;data_new&quot;, &quot;global_warming_pew.csv&quot;))</code></pre>
+<pre class="r"><code>global_warming_pew %&gt;% 
+  filter(response ==c(&quot;Not warming&quot;,&quot;Earth is warming&quot;)) %&gt;% 
+  count(party_or_ideology, response)</code></pre>
+<pre><code>## # A tibble: 8 × 3
+##   party_or_ideology       response             n
+##   &lt;chr&gt;                   &lt;chr&gt;            &lt;int&gt;
+## 1 Conservative Republican Earth is warming   124
+## 2 Conservative Republican Not warming        225
+## 3 Liberal Democrat        Earth is warming   202
+## 4 Liberal Democrat        Not warming         11
+## 5 Mod/Cons Democrat       Earth is warming   281
+## 6 Mod/Cons Democrat       Not warming         79
+## 7 Mod/Lib Republican      Earth is warming    68
+## 8 Mod/Lib Republican      Not warming         68</code></pre>
+<pre class="r"><code>#4 proportion CIs, where x=nr. of people who believe earth is warming
+
+#Conservative Republican
+prop.test(x=124, n=349, conf.level = 0.95)</code></pre>
+<pre><code>## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  124 out of 349
+## X-squared = 29, df = 1, p-value = 9e-08
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.306 0.408
+## sample estimates:
+##     p 
+## 0.355</code></pre>
+<pre class="r"><code>#Liberal Democrat 
+prop.test(x=202, n=213, conf.level = 0.95)</code></pre>
+<pre><code>## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  202 out of 213
+## X-squared = 169, df = 1, p-value &lt;2e-16
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.907 0.973
+## sample estimates:
+##     p 
+## 0.948</code></pre>
+<pre class="r"><code>#Mod/Cons Democrat
+prop.test(x=281, n=360, conf.level = 0.95)</code></pre>
+<pre><code>## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  281 out of 360
+## X-squared = 112, df = 1, p-value &lt;2e-16
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.733 0.822
+## sample estimates:
+##     p 
+## 0.781</code></pre>
+<pre class="r"><code>#Mod/Lib Republican
+prop.test(x=68, n=136, conf.level = 0.95)</code></pre>
+<pre><code>## 
+##  1-sample proportions test without continuity correction
+## 
+## data:  68 out of 136
+## X-squared = 0, df = 1, p-value = 1
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.417 0.583
+## sample estimates:
+##   p 
+## 0.5</code></pre>
+<p>As one would assume, the population proportion estimates indicate that conservative republicans are particularly sceptical towards the notion of a warming climate. In contrast, liberal democrats almost uniformly agree with the claim that the climate is warming. Even among more conservative democrats, a high proportion agrees that the climate is warming. Among moderate republicans, there is a high chance that opinions on the topic are about equally split.</p>
+</div>
