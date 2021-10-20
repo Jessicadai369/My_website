@@ -10,22 +10,22 @@ params:
     subtitle: |-
      # A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
       AND RELEASED UNDER THE CREATIVE COMMONS.
-    title: Hi, my name is Jessica Dai
+    title: Hi, my name is Jessica Dai, 
   blog: {}
   contact:
     address:
-      - city: City, ST 00000
+      - city: london
         country: United Kingdom
         street: Regent's street
-        title: Address
+        title: London Business School
     buttonClear: Clear
     buttonSend: Send message
     email:
-      - email: example@domain.com
+      - email: mdai.mfa2022@LONDON.EDU
         title: Email
     enable: yes
     phone:
-      - phone: (000) 000-0000 x1234
+      - phone: (86)8888 8888 
         title: Phone
   custom_css: []
   custom_js: []
@@ -35,28 +35,28 @@ params:
     text: Please visit [this page](/)
   favicon: favicon.ico
   footer:
-    copyright: Company Name
+    copyright: JESSICA DAI
     enable: yes
     quicklinks:
       - alt: HTML5 UP
         text: 'Design: '
         url: https://www.html5up.net
     social:
-      - icon: fa-twitter
-        label: Twitter
-        url: https://www.twitter.com
+      #- icon: fa-twitter
+      #  label: Twitter
+      #  url: https://www.twitter.com
       - icon: fa-facebook
         label: Facebook
-        url: https://www.facebook.com
+        url: https://www.facebook.com/profile.php?id=100022282719331 
       - icon: fa-instagram
         label: Instagram
-        url: https://www.instagram.com
+        url: https://www.instagram.com/dai.mengyao/ 
       - icon: fa-github
         label: GitHub
-        url: https://www.github.com
+        url: https://github.com/Jessicadai369 
       - icon: fa-linkedin
         label: LinkedIn
-        url: https://www.linkedin.com
+        url: http://linkedin.com/in/mengyao-dai-ab92761a3 
   image: ''
   name: Your name
   navigation:
@@ -71,10 +71,10 @@ params:
         url: '#'
       - name: Blogs
         url: blogs
-      - name: Generic Blog
-        url: blogs/ipsum
-      - name: Elements
-        url: elements.html
+      #- name: Generic Blog
+     #   url: blogs/ipsum
+     # - name: Elements
+     #   url: elements.html
     menu: Menu
     subtitle: By HTML5 Up
     title: Forty
