@@ -93,14 +93,14 @@ params:
         subtitle: Lorem Etiam Nullam
         title: Magna
         url: blogs/magna
-      - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
-        title: Ipsum
-        url: blogs/ipsum
-      - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
-        url: blogs/ipsum
+      - image: CV.jpg
+        subtitle: Learn more about me
+        title: Resume
+        url: blogs/resume_me
+      - image: lingnan_Uni.jpg
+        subtitle: I miss Hong Kong
+        title: Undergrad
+        url: blogs/undergrad_uni
       - image: pic06.jpg
         subtitle: Feugiat Amet Tempus
         title: Etiam

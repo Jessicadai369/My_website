@@ -5,17 +5,38 @@ categories:
 date: "2021-09-30"
 description: Hi there! nice to meet you:) # the title that will show up once someone gets to this page
 draft: false
-image: Jessica Dai Professional.jpg # save picture in \static\img\blogs. Acceptable formats= jpg, jpeg, or png . Your iPhone pics wont work
+image: london_eye.jpg # save picture in \static\img\blogs. Acceptable formats= jpg, jpeg, or png . Your iPhone pics wont work
 
 keywords: ""
 slug: self_intro # slug is the shorthand URL address... no spaces plz
 title: Hi there! nice to meet you:)
 ---
-  
-```{r}
+
+### Biography
+
+Jessica Dai
+
+#### Education Background
+
+- Master: **London Business School**
+- Undergrad: **Lingnan University**, Hong Kong
+- [Exchange program](https://www.hanyang.ac.kr/web/eng):  **Hanyang University**, South Korea
 
 
-# I am originally from Zhengzhou, China and I like traveling, embracing different cultures and learning languages, so I have studied in several different locations like Hong Kong, South Korea and Shanghai. In my spare time, I am an art fanatic and have a passion for fashion design. I not-so-secretly stalk Vera Wang’s wedding dress designs, because I believe that looking at beautiful things can make our lives a little brighter. Last summer, I worked at TusStar, a venture capital firm focusing on second- and third-tier markets like Zhengzhou, rather than focusing their attentions on areas like Beijing and Shanghai, where so many other investment firms pool their energies. This experience made me excited to continue delving into investment opportunities in overlooked markets and SMBs post-graduation.
+#### Hobbies
+ 
+- Baseball
+- Pilates
+- Piano
+- Fashion Blogging
 
-```
+#### Languages
+
+- Native Mandarin speaker
+- Fluent in English and Cantonese
+- Beginner in Korean
+
+
+
+> I am originally from Zhengzhou, China and I like traveling, embracing different cultures and learning languages, so I have studied in several different locations like Hong Kong, South Korea and Shanghai. In my spare time, I am an art fanatic and have a passion for fashion design. I not-so-secretly stalk Vera Wang’s wedding dress designs, because I believe that looking at beautiful things can make our lives a little brighter. Last summer, I worked at TusStar, a venture capital firm focusing on second- and third-tier markets like Zhengzhou, rather than focusing their attentions on areas like Beijing and Shanghai, where so many other investment firms pool their energies. This experience made me excited to continue delving into investment opportunities in overlooked markets and SMBs post-graduation.
 

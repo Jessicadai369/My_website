@@ -1,0 +1,21 @@
+---
+categories:  
+- ""    #the front matter should be like the one found in, e.g., blog2.md. It cannot be like the normal Rmd we used
+- ""
+date: "2021-09-30"
+description: My professional journey # the title that will show up once someone gets to this page
+draft: false
+image: DAI_CV.jpg # save picture in \static\img\blogs. Acceptable formats= jpg, jpeg, or png . Your iPhone pics wont work
+
+keywords: ""
+slug: resume_me # slug is the shorthand URL address... no spaces plz
+title: Resume
+---
+
+Please check out more about my professional experience!
+
+> Through internships in asset management, investment banking, and private equity, I have grounded my understanding of financial knowledge and how it connects to management theory. As an asset management intern at **Sino IC Leasing Co., Ltd.**, I assisted my manager in quarterly reviews of company resources like machinery and trucks to understand the firm’s future capital expenditure needs so that we could consider where to cut costs. The task taught me the crucial role that asset managers play in the corporate scene; after all, determining the value of company resources informs the company about its financial situation. I utilised my knowledge of financial tools and methods when I worked at **TusStar** as a private equity analyst. My main task was to review pitch decks on potential technology firms to invest in, analysing the company’s available financial statements and revenue projections to determine the future viability of the project. 
+
+> Part of the appraisal process was conducting online research and interviews with key employees of these startup companies, as well as examining their development history and staff and equity structure. In one of these projects focused on helping a local healthcare company expand their business into a new line of health goods, my modelling showed synergies of nearly thirty million yuan per year. This was a sizable multiple of the firm’s existing profits of seven million yuan per year in this area, leading to TusStar’s eventual investment in the project.
+
+Hope to continue my journey as a banker! 
