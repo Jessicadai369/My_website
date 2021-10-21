@@ -1,7 +1,7 @@
 baseURL: https://mengyaojessica.netlify.app/ 
 languageCode: en-us
 title: Portfolio website for Jessica DAI
-theme: forty
+theme: Forty
 googleAnalytics: ''
 disqusShortname: ''
 params:
@@ -77,7 +77,7 @@ params:
      #   url: elements.html
     menu: Menu
     # subtitle: By HTML5 Up
-    title: Forty
+    title: Forever 22
   tiles:
     enable: yes
     showcase:
