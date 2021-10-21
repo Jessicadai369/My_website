@@ -46,7 +46,7 @@ library(openintro)
 library(lubridate)
 ```
 
-# Challenge 1: Yield Curve inversion
+# Yield Curve inversion
 
 
 First, we will load the yield curve data file that contains data on the yield curve since 1960-01-01
